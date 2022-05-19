@@ -3,11 +3,12 @@ import axios from "axios";
 
 class Hotels {
 
+    _hotels = []
+
     constructor() {
         makeAutoObservable(this)
+         this.room = new Room(this)
     }
-
-    _hotels = []
 
     get hotels() {
         return this._hotels
@@ -15,6 +16,11 @@ class Hotels {
 
     set hotels(value) {
         this._hotels = value
+    }
+
+    funk() {
+        console.log('sdfsdfsf')
+        return this.room.getRoom()
     }
 
     getHotels() {
@@ -26,20 +32,20 @@ class Hotels {
     }
 }
 
-class Room extends Hotels {
-    _room = ''
+class Room {
+    room = 'sas'
 
-
-
-    getRoom() {
-        this._hotels.map(item => {
-            console.log(item)
-        })
+    constructor(room) {
+        makeAutoObservable(this)
     }
 
+    getRoom() {
+        // this.hotels.map(item => {
+            console.log('item')
+        // })
+        // return this.room
+    }
 }
-
-
 
 export default new Hotels()
 
