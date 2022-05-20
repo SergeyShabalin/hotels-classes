@@ -1,5 +1,5 @@
 import React, {Context} from 'react';
-import Hotels from "./store/Hotels";
+import RootStore from "./store/Hotels";
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
@@ -10,7 +10,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 const RootContext = React.createContext(null)
 
 root.render(
-    <RootContext.Provider value={Hotels}>
+    <RootContext.Provider value={RootStore}>
         <App/>
     </RootContext.Provider>
 );

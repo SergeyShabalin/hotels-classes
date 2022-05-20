@@ -7,16 +7,17 @@ import './Rooms.css'
 
 function Rooms() {
 
-    const Hotels = useStore()
+    const RootStore = useStore()
 
     useEffect(() => {
-        Hotels.getHotels()
+        RootStore.hotel.getHotels()
+        console.log(RootStore)
     }, [])
 
 
-    const a = Hotels.hotels.map(item => {
-            return (
 
+    const a = RootStore.hotel.hotels.map(item => {
+            return (
 
                 <div key={item.id} className='grid-item'>
                     <img className='image' src={item.img}/>
@@ -54,7 +55,7 @@ function Rooms() {
                         </div>
                         <div className='property-price'>
                             <div
-                                 onClick={Hotels.funk}
+                                  onClick={()=>RootStore.roomes.getRoom()}
                                 type="button" className="btn">Забронировать
                             </div>
                         </div>

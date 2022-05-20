@@ -1,13 +1,19 @@
 import {makeAutoObservable} from "mobx";
 import axios from "axios";
 
-class Hotels {
-
-    _hotels = []
-
+class RootStore {
     constructor() {
+        this.hotel = new Hotels()
+        this.roomes = new Room()
+    }
+}
+
+class Hotels {
+    _hotels = []
+    rootStore
+    constructor(rootStore) {
         makeAutoObservable(this)
-         this.room = new Room(this)
+        this.rootStore = rootStore
     }
 
     get hotels() {
@@ -18,10 +24,6 @@ class Hotels {
         this._hotels = value
     }
 
-    funk() {
-        console.log('sdfsdfsf')
-        return this.room.getRoom()
-    }
 
     getHotels() {
         axios.get(' http://localhost:5000/hotel').then((response) => {
@@ -35,18 +37,18 @@ class Hotels {
 class Room {
     room = 'sas'
 
-    constructor(room) {
-        makeAutoObservable(this)
+    constructor() {
+
     }
 
     getRoom() {
         // this.hotels.map(item => {
-            console.log('item')
+        console.log(this.room)
         // })
         // return this.room
     }
 }
 
-export default new Hotels()
+export default new RootStore()
 
 
